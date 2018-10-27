@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"                                                           
 ROOT="$(realpath $DIR/..)"
-PROJ="$ROOT/hello-cpp-linwin/"
+PROJ="$ROOT/fdo/"
 
 indent(){
     sed 's/^/    /'
@@ -24,10 +24,10 @@ echo "Taking snapshot: 'develop'"
 cp -p "$DIR/Dockerfile" "$ROOT"
 
 cd "$ROOT"
-docker build . -t "hellodev:latest"
+docker build . -t "fdodev:latest"
 
 rm "$ROOT/Dockerfile"
 
 echo "To explore 'develop' run:"
-echo "docker run --rm -it hellodev /bin/bash"
+echo "docker run --rm -it fdodev /bin/bash"
 echo

@@ -1,25 +1,20 @@
 # This dockerfile makes a snapshot of the development environment
-FROM hellorun
+FROM fdorun
 
-# install build dependencies
+# Install build dependencies
 RUN apt-get install -y \
-apt-utils \
-git \
-build-essential \
-make \
-cmake \
-libboost-test-dev \
-libboost-program-options1.58-dev
+build-essential bison lintian dos2unix libssl-dev libcurl4-openssl-dev libexpat-dev libmysqlclient-dev \
+unixodbc-dev python-dev libpq-dev libcppunit-dev libxalan-c-dev libxerces-c-dev libgdal-dev libjsoncpp-dev cmake
 
 # include the code
-COPY hello-cpp-linwin/ /usr/local/src/hello
+COPY fdo/ /usr/local/src/fdo
 
 # remove intermediate files (to ensure a clean build later)
-RUN rm -rf /usr/local/src/hello/build
+RUN rm -rf /usr/local/src/fdo/build
 
-# since hello-cpp-linwin is a submodule on the local machine
+# since fdo is a submodule on the local machine
 # git relocated .git/ to the parent repo, un-submodule it in the image
-RUN rm /usr/local/src/hello/.git
-COPY .git/modules/hello-cpp-linwin /usr/local/src/hello/.git/
+RUN rm /usr/local/src/fdo/.git
+COPY .git/modules/fdo /usr/local/src/fdo/.git/
 
 
