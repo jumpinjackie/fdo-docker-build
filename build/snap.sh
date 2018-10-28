@@ -13,13 +13,10 @@ echo "Taking a 'develop' snapshot first (required for 'build')"
 "$DIR/../develop/snap.sh" | indent
 
 cd "$DIR"
-docker build . -t "hellobuild:latest"
+docker build . -t "fdobuild:latest"
 
 echo "things to try:"
-echo "docker run --rm -it hellobuild /bin/bash"
-echo "docker run --rm hellobuild /usr/local/src/hello/build/testBin/cow_test --log_level=test_suite"
-echo "docker run --rm hellobuild /usr/local/src/hello/build/bin/hello"
-echo "docker run --rm hellobuild /usr/local/src/hello/build/bin/hello --version"
+echo "docker run --rm -it fdobuild /bin/bash"
 echo
 
 cd "$ORIG"
