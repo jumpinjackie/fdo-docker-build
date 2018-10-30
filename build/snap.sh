@@ -17,6 +17,8 @@ docker build . -t "fdobuild:latest"
 
 echo "things to try:"
 echo "docker run --rm -it fdobuild /bin/bash"
+echo "docker run --rm -it fdobuild ls /usr/local/src/fdo/build"
+echo "docker run --rm -it -v \${PWD}/artifacts:/artifacts fdobuild cp /usr/local/src/fdo/build/fdosdk-4.2.0.0-Ubuntu14-amd64.tar.gz /artifacts"
 echo
 
 cd "$ORIG"
