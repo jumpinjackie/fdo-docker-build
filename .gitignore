@@ -54,7 +54,6 @@ install_manifest.txt
 [Rr]eleases/
 x64/
 x86/
-[Bb]uild/
 bld/
 [Bb]in/
 [Oo]bj/

@@ -1,5 +1,5 @@
 # This dockerfile makes a snapshot of the development environment
-FROM fdorun
+FROM fdo_ubuntu14_run
 
 # Install build dependencies
 RUN apt-get install -y \
