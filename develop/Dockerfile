@@ -3,7 +3,7 @@ FROM fdorun
 
 # Install build dependencies
 RUN apt-get install -y \
-build-essential bison lintian dos2unix libssl-dev libcurl4-openssl-dev libexpat-dev libmysqlclient-dev \
+lsb-release build-essential bison lintian dos2unix libssl-dev libcurl4-openssl-dev libexpat-dev libmysqlclient-dev \
 unixodbc-dev python-dev libpq-dev libcppunit-dev libxalan-c-dev libxerces-c-dev libgdal-dev libjsoncpp-dev cmake ninja-build
 
 # include the code
