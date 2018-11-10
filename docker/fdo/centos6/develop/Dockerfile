@@ -2,15 +2,16 @@
 FROM fdo_centos6_run
 
 # Install build dependencies. Ninja has to be fetched and installed separately
-RUN yum install -y wget \
+# NOTE: Normal gcc/g++ is too old here (FDO now uses bits of the C++11 std library). 
+# We have to use the community-provided Developer Toolset package: 
+# https://www.softwarecollections.org/en/scls/rhscl/devtoolset-7/
+RUN yum install -y wget centos-release-scl \
 && wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm \
 && rpm -ivh epel-release-6-8.noarch.rpm  \
 && yum repolist \
 && yum update -y \
-&& yum install -y redhat-lsb-core gcc gcc-c++ automake libtool bison unixODBC-devel libcom_err-devel \ 
-krb5-devel openssl-devel mysql-devel postgresql-devel cmake unzip \
-&& wget https://github.com/ninja-build/ninja/releases/download/v1.8.2/ninja-linux.zip \
-&& unzip ninja-linux.zip -d /usr/local/bin
+&& yum install -y redhat-lsb-core devtoolset-7 automake libtool bison unixODBC-devel libcom_err-devel \ 
+krb5-devel mysql-devel postgresql-devel cmake unzip
 
 # include the code
 COPY fdo/ /usr/local/src/fdo
