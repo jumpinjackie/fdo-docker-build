@@ -23,8 +23,14 @@ echo "Taking a 'develop' snapshot first (required for '$CONTAINER_NAME')"
 
 cd "$DIR"
 docker build . -t "$CONTAINER_NAME:latest"
+if [ "$?" -ne 0 ] ; then
+    exit 1
+fi
 echo "Copying SDK tarball to artifacts"
 docker run --rm -it -v ${STAGE}:/artifacts $CONTAINER_NAME cp /usr/local/src/fdo/build/fdosdk.tar.gz /artifacts/fdosdk-${FDO_VER}-${DISTRO}-${FDO_ARCH}.tar.gz
+if [ "$?" -ne 0 ] ; then
+    exit 1
+fi
 
 echo "things to try:"
 echo "docker run --rm -it $CONTAINER_NAME /bin/bash"
