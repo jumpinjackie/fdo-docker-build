@@ -1,0 +1,1 @@
+This directory will contain ccache output from a build of FDO for centos 6
