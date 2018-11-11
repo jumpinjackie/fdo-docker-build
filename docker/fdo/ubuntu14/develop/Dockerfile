@@ -3,11 +3,14 @@ FROM fdo_ubuntu14_run
 
 # Install build dependencies
 RUN apt-get install -y \
-lsb-release build-essential bison lintian dos2unix libssl-dev libcurl4-openssl-dev libexpat-dev libmysqlclient-dev \
-unixodbc-dev python-dev libpq-dev libcppunit-dev libxalan-c-dev libxerces-c-dev libgdal-dev libjsoncpp-dev cmake ninja-build
+lsb-release ccache build-essential bison lintian dos2unix libssl-dev libcurl4-openssl-dev libexpat-dev libmysqlclient-dev \
+unixodbc-dev libpq-dev libcppunit-dev libxalan-c-dev libxerces-c-dev libgdal-dev cmake ninja-build
 
 # include the code
 COPY fdo/ /usr/local/src/fdo
+
+# include our last collected cache
+COPY caches/fdo/ubuntu14/.ccache /root/.ccache
 
 # remove intermediate files (to ensure a clean build later)
 RUN rm -rf /usr/local/src/fdo/build

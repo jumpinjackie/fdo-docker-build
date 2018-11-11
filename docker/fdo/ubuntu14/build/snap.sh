@@ -13,6 +13,7 @@ COMPONENT=`basename $(dirname $(dirname $DIR))`
 DISTRO=`basename $(dirname $DIR)`
 THIS_DIR=`basename $DIR`
 CONTAINER_NAME="${COMPONENT}_${DISTRO}_${THIS_DIR}"
+CCACHE_LOCATION="${ROOT}/caches/${COMPONENT}/${DISTRO}"
 
 indent(){
     sed 's/^/    /'
@@ -28,6 +29,11 @@ if [ "$?" -ne 0 ] ; then
 fi
 echo "Copying SDK tarball to artifacts"
 docker run --rm -it -v ${STAGE}:/artifacts $CONTAINER_NAME cp /usr/local/src/fdo/build/fdosdk.tar.gz /artifacts/fdosdk-${FDO_VER}-${DISTRO}-${FDO_ARCH}.tar.gz
+if [ "$?" -ne 0 ] ; then
+    exit 1
+fi
+echo "Copying ccache output to: ${CCACHE_LOCATION}"
+docker run --rm -it -v ${CCACHE_LOCATION}:/tmp/cache $CONTAINER_NAME cp -r /root/.ccache /tmp/cache
 if [ "$?" -ne 0 ] ; then
     exit 1
 fi
