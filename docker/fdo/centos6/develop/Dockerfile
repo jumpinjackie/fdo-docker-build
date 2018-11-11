@@ -10,11 +10,14 @@ RUN yum install -y wget centos-release-scl \
 && rpm -ivh epel-release-6-8.noarch.rpm  \
 && yum repolist \
 && yum update -y \
-&& yum install -y redhat-lsb-core devtoolset-7 automake libtool bison unixODBC-devel libcom_err-devel \ 
+&& yum install -y redhat-lsb-core ccache devtoolset-7 automake libtool bison unixODBC-devel libcom_err-devel \ 
 krb5-devel mysql-devel postgresql-devel cmake unzip
 
 # include the code
 COPY fdo/ /usr/local/src/fdo
+
+# include our last collected cache
+COPY caches/fdo/centos6/.ccache /root/.ccache
 
 # remove intermediate files (to ensure a clean build later)
 RUN rm -rf /usr/local/src/fdo/build && rm -rf /usr/local/src/fdo/build_thirdparty
