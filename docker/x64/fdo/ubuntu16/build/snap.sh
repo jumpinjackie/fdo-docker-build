@@ -5,8 +5,8 @@ ROOT="$(realpath $DIR/../../../../..)"
 PROJ="$ROOT/fdo/"
 STAGE="$ROOT/artifacts"
 
-#TODO: This should be sourced from a central place (as we fork this out to distro-specific builds)
-FDO_VER=4.2.0.0
+. $ROOT/fdo_version.sh
+echo "FDO Version is: $FDO_VER"
 
 CPU=`basename $(dirname $(dirname $(dirname $DIR)))`
 COMPONENT=`basename $(dirname $(dirname $DIR))`
