@@ -1,5 +1,5 @@
 # This dockerfile makes a snapshot of the development environment
-FROM fdo_centos7_run
+FROM fdo_centos7_run_x64
 
 # Install build dependencies
 RUN yum install -y wget \

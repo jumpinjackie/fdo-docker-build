@@ -1,5 +1,5 @@
 # This dockerfile makes a snapshot of the development environment
-FROM fdo_centos6_run
+FROM fdo_centos6_run_x64
 
 # Install build dependencies. Ninja has to be fetched and installed separately
 # NOTE: Normal gcc/g++ is too old here (FDO now uses bits of the C++11 std library). 

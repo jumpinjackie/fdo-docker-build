@@ -1,5 +1,5 @@
 # This dockerfile executes the build, it starts from the dev environment
-FROM fdo_ubuntu14_develop
+FROM fdo_ubuntu14_develop_x64
 
 # These are the build steps
 RUN BUILD_DIR=/usr/local/src/fdo/build  \

@@ -1,5 +1,5 @@
 # This dockerfile makes a snapshot of the development environment
-FROM fdo_ubuntu16_run
+FROM fdo_ubuntu16_run_x64
 
 # Install build dependencies
 RUN apt-get install -y \

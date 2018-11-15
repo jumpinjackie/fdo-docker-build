@@ -1,5 +1,5 @@
 # This dockerfile executes the build, it starts from the dev environment
-FROM fdo_centos6_develop
+FROM fdo_centos6_develop_x64
 
 # These are the build steps
 RUN THIRDPARTY_BUILD_DIR=/usr/local/src/fdo/build_thirdparty \
