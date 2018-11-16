@@ -13,7 +13,7 @@ COMPONENT=`basename $(dirname $(dirname $DIR))`
 DISTRO=`basename $(dirname $DIR)`
 THIS_DIR=`basename $DIR`
 CONTAINER_NAME="${COMPONENT}_${DISTRO}_${THIS_DIR}_${CPU}"
-CCACHE_LOCATION="${ROOT}/caches/${COMPONENT}/${DISTRO}/${CPU}"
+CCACHE_LOCATION="${ROOT}/caches/${CPU}/${COMPONENT}/${DISTRO}"
 
 indent(){
     sed 's/^/    /'
@@ -28,7 +28,7 @@ if [ "$?" -ne 0 ] ; then
     exit 1
 fi
 echo "Copying SDK tarball to artifacts"
-docker run --rm -it -v ${STAGE}:/artifacts $CONTAINER_NAME cp /usr/local/src/fdo/build/fdosdk.tar.gz /artifacts/fdosdk-${FDO_VER}-${DISTRO}-${CPU}.tar.gz
+docker run --rm -it -v ${ROOT}:/artifacts $CONTAINER_NAME cp -r /usr/local/src/fdo/build/artifacts /artifacts
 if [ "$?" -ne 0 ] ; then
     exit 1
 fi
