@@ -1,7 +1,7 @@
 #!/bin/bash
 for cpu in x64 x86
 do
-    for distro in ubuntu16 ubuntu14 centos7
+    for distro in ubuntu18 ubuntu16 ubuntu14 centos7
     do
         if [ -d ./docker/$cpu/fdo/$distro ];
         then
