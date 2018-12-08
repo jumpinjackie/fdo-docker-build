@@ -52,8 +52,6 @@ install_manifest.txt
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
-x64/
-x86/
 bld/
 [Bb]in/
 [Oo]bj/
@@ -72,3 +70,4 @@ Temporary/
 
 artifacts/
 logs/
+fdosdk.tar.gz
