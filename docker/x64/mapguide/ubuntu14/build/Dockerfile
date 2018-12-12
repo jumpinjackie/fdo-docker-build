@@ -10,7 +10,7 @@ RUN BUILD_DIR=/usr/local/src/mapguide/build \
 && mkdir -p $OEM_BUILD_DIR \
 && mkdir -p $BUILD_DIR \
 && cd /usr/local/src/mapguide/MgDev \
-&& ./cmake_bootstrap.sh --oem-working-dir $OEM_BUILD_DIR --build 64 --with-ccache --have-system-xerces \
+&& ./cmake_bootstrap.sh --prefix /usr/local/mapguideopensource-3.3.0 --oem-working-dir $OEM_BUILD_DIR --build 64 --with-ccache --have-system-xerces \
 && ccache -s
 
 # 2. Add FDO sdk this should've been copied to the same directory by snap.sh
